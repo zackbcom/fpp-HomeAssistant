@@ -383,8 +383,13 @@ private:
         }
 
         config["device"]["manufacturer"] = "Falcon Player";
-        // TODO(edalquist) how do I get platform/version in code?
-        // config["device"]["model"] = getSetting("Platform") + "(" + getSetting("Variant") + ")";
+        std::string model = getSetting("Platform");
+        std::string variant = getSetting("Variant");
+        if (!variant.empty()) {
+            model += " (" + variant + ")";
+        }
+        config["device"]["model"] = model.empty() ? "FPP" : model;
+        config["device"]["hw_version"] = getSetting("cape-info");
         config["device"]["configuration_url"] = "http://" + getSetting("HostName") + "/plugin.php?_menu=content&plugin=fpp-HomeAssistant&page=plugin_setup.php";
         config["device"]["sw_version"] = getFPPVersion();
 
