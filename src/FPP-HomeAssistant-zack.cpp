@@ -22,7 +22,7 @@
 class FPPHomeAssistantPlugin : public FPPPlugin, public httpserver::http_resource {
 public:
     FPPHomeAssistantPlugin()
-      : FPPPlugin("fpp-HomeAssistant"),
+      : FPPPlugin("fpp-HomeAssistant-zack"),
         sensorUpdateFrequency(60),
         sensorThread(nullptr),
         runSensorThread(false),
@@ -49,7 +49,7 @@ public:
             gpioConfig = emptyArray;
         }
 
-        if (LoadJsonFromFile(FPP_DIR_CONFIG("/plugin.fpp-HomeAssistant.json"), config)) {
+        if (LoadJsonFromFile(FPP_DIR_CONFIG("/plugin.fpp-HomeAssistant-zack.json"), config)) {
             if (mqtt == nullptr) {
                 LogErr(VB_PLUGIN, "MQTT Is Not Configured, cannot configure Home Assistant Plugin\n");
                 WarningHolder::AddWarning("MQTT Is Not Configured, cannot configure Home Assistant Plugin");
@@ -390,7 +390,7 @@ private:
         }
         config["device"]["model"] = model.empty() ? "FPP" : model;
         // config["device"]["hw_version"] = getSetting("cape-info");
-        config["device"]["configuration_url"] = "http://" + getSetting("HostName") + "/plugin.php?_menu=content&plugin=fpp-HomeAssistant&page=plugin_setup.php";
+        config["device"]["configuration_url"] = "http://" + getSetting("HostName") + "/plugin.php?_menu=content&plugin=fpp-HomeAssistant-zack&page=plugin_setup.php";
         config["device"]["sw_version"] = getFPPVersion();
 
         std::string configStr = SaveJsonToString(config);

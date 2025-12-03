@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# fpp-HomeAssistant install script
+# fpp-HomeAssistant-zack install script
 
 BASEDIR=$(dirname $0)
 cd $BASEDIR
