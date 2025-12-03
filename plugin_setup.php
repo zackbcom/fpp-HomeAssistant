@@ -517,7 +517,7 @@ function LoadConfig() {
                 (config['gpios'].hasOwnProperty(fppGPIOs[i].pin)))
                 row += config['gpios'][fppGPIOs[i].pin].DeviceName;
             else
-                row += fppGPIOs[i].pin;
+                row += fppGPIOs[i].pin.replace(/\./g, '-');
 
             row += "' /></td>";
 
